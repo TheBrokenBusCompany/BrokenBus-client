@@ -1,4 +1,4 @@
-const imageEndpoint = 'http://localhost:5001/imgurTest/imagen';
+const imageEndpoint = 'http://localhost:5001/imgurTest/upload';
 var file = null;
 
 function handleFiles(e) {
