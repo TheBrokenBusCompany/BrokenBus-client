@@ -1,9 +1,6 @@
 # BrokenBus-client
 Client for the BrokenBus application
 
-## BrokenBus-server
-TODO: In proccess of separating both projects
-
 ## Deploy locally
 
 ```
