@@ -11,6 +11,8 @@ function showModal(element) {
     document.getElementById("modalLineCode").innerText = "Line: " + properties.codLine;
     document.getElementById("modalDirection").innerText = "Direction: " + properties.direction;
     document.getElementById("modalLastUpdate").innerText = "Last update: " + properties.lastUpdate;
+    document.getElementById("formEmtCode").value = 'b' + properties.busCode;
+
     clearRows();
     showCommentList('b' + properties.busCode);
 }

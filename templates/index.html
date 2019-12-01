@@ -67,7 +67,13 @@
                 <p id="modalLastUpdate"><!-- Bus last update will be inserted here --></p>
               </div>
               <div class="modal-footer">
-                <button id="addComentario">Add Comentario</button></br>
+                <form id="commentForm" style="display: hidden;" method="POST" action="http://localhost:5001/api/v1/comments">
+                        <input type="text" name="body"/>
+                        <input id="formUserId" type="hidden" name="userId" value=""/>
+                        <input type="hidden" name="image" value="null"/>
+                        <input id="formEmtCode" type="hidden" name="emtCode" value=""/>
+                        <input type="submit" id="addComment" value="Add Comment"/></br>
+                </form>
                 <table id="commentsTable" style="border:1px solid black">
                     <th>
                         <td>
