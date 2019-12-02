@@ -35,7 +35,7 @@ function onSignIn(googleUser) {
 
     document.getElementById('googleSignIn').style.display = 'none';
     document.getElementById('googleUser').style.display = 'inherit';
-    document.getElementById('commentForm').style.display = 'inherit';
+    document.getElementById('divCommentForm').style.display = 'inherit';
 }
 
 
@@ -63,7 +63,7 @@ function signOut() {
 
     document.getElementById('googleSignIn').style.display = 'inherit';
     document.getElementById('googleUser').style.display = 'none';
-    document.getElementById('commentForm').style.display = 'none';
+    document.getElementById('divCommentForm').style.display = 'none';
 }
 
 function sleep(ms) {

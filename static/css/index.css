@@ -168,3 +168,12 @@
     to {opacity: 1}
 }
 /* End: Bus and stop info Modal */
+
+/* Comments in modal */
+
+#divCommentForm {
+    display: hidden;
+}
+#commentsTable {
+    border:1px solid black;
+}
