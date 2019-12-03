@@ -143,16 +143,14 @@ async function showStops() {
 }
 
 function postComment() {
-    var imageUrl = uploadImage();
-    if (imageUrl == '')
-        imageUrl = 'null';
+    var imageEncoded = prepareImage();
     var body = document.getElementById('commentBody').value;
     var emtCode = document.getElementById('formEmtCode').value;
     var userToken = document.getElementById('formUserToken').value;
     var request = new XMLHttpRequest();
     request.open("POST", urlComment);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send('image=' + window.encodeURIComponent(imageUrl) +
+    request.send('image=' + imageEncoded +
         '&userToken=' + userToken +
         '&body=' + body +
         '&emtCode=' + emtCode);
