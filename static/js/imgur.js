@@ -23,7 +23,8 @@ function handleFiles(e) {
 }
 
 function prepareImage() {
-
+    if(document.getElementById('imgurUpload').value == '')
+        return null;
     var canvas = document.getElementById('canvas');
         
     var dataURI = canvas.toDataURL();

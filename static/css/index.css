@@ -172,8 +172,18 @@
 /* Comments in modal */
 
 #divCommentForm {
-    display: hidden;
+    display: none;
 }
+
 #commentsTable {
-    border:1px solid black;
+    border: 1px solid black;
+}
+
+#canvas {
+    display: none;
+}
+
+.commentImage {
+    width: auto;
+    height: 64px;
 }

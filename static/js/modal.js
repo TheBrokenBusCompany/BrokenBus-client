@@ -54,14 +54,20 @@ function showCommentList(busCode) {
   httpGetAsync(urlBusComments + busCode, function(response) {   
     response = JSON.parse(response);
     for (var i = 0; i<response.length; i++) {
-      var author = response[i]['userId']
-      var body = response[i]['body']
-      var image = response[i]['imageURL']
+      var author = response[i]['userId'];
+      var body = response[i]['body'];
+      var image = response[i]['imageURL'];
 
-      var div = document.createElement('div')
-      div.innerHTML = author + '</br>' + body + '</br><img src="' + image + '"/>'
+      if (image == null || image == 'null') {
+        image = '';
+      } else {
+        image = '<img class="commentImage" src="' + image + '"/>'
+      }
 
-      addRow(div)
+      var div = document.createElement('div');
+      div.innerHTML = author + '</br>' + body + '</br>' + image;
+
+      addRow(div);
     }
 }, function(response) {
     console.log('Error on load comments = ' + response);
