@@ -1,4 +1,4 @@
-const imageEndpoint = 'http://localhost:5001/imgurTest/upload';
+const imageEndpoint = 'http://localhost:5001/api/v1/imgurTest/upload';
 var file = null;
 
 function handleFiles(e) {
@@ -37,4 +37,15 @@ function uploadImage() {
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     request.send('image=' + encoded);
+
+    if (request.status = 200) {
+        // TODO: this request returns empty when it should not :(
+        console.log('Upload to imgur complete');
+        console.log(request.response.json);
+        console.log(request.responseText);
+    } else {
+        alert('ERROR: status code: ' + request.status);
+    }
+
+    return request.response;
 }

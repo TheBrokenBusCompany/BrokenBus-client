@@ -3,6 +3,7 @@ var user = null;
 const busesEndpoint = 'http://localhost:5001/api/v1/buses/geojson';
 const stopsEndpoint = 'http://localhost:5001/api/v1/stops/geojson';
 const urlUser = 'http://localhost:5001/api/v1/users';
+const urlComment = 'http://localhost:5001/api/v1/comments';
 
 const busIcon = new L.icon({ 
     iconUrl: '/static/icon/icon_bus.png',
@@ -31,7 +32,7 @@ function onSignIn(googleUser) {
 
     document.getElementById("userName").innerText = user.getName();
     document.getElementById("profilePicture").src = user.getImageUrl();
-    document.getElementById('formUserId').value = id_token;
+    document.getElementById('formUserToken').value = id_token;
 
     document.getElementById('googleSignIn').style.display = 'none';
     document.getElementById('googleUser').style.display = 'inherit';
@@ -59,7 +60,7 @@ function signOut() {
 
     document.getElementById("userName").innerText = '';
     document.getElementById("profilePicture").src = '';
-    document.getElementById('formUserId').value = '';
+    document.getElementById('formUserToken').value = '';
 
     document.getElementById('googleSignIn').style.display = 'inherit';
     document.getElementById('googleUser').style.display = 'none';
@@ -139,4 +140,27 @@ async function showStops() {
         await sleep(60000); // Sleep for a minute and try again
         showStops();
     });
+}
+
+function postComment() {
+    var imageUrl = uploadImage();
+    if (imageUrl == '')
+        imageUrl = 'null';
+    var body = document.getElementById('commentBody').value;
+    var emtCode = document.getElementById('formEmtCode').value;
+    var userToken = document.getElementById('formUserToken').value;
+    var request = new XMLHttpRequest();
+    request.open("POST", urlComment);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send('image=' + window.encodeURIComponent(imageUrl) +
+        '&userToken=' + userToken +
+        '&body=' + body +
+        '&emtCode=' + emtCode);
+    
+    if (request.status = 200) {
+        clearRows();
+        showCommentList(emtCode);
+    } else {
+        alert('ERROR: status code: ' + request.status)
+    }
 }

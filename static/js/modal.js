@@ -52,9 +52,7 @@ function addRow(content) {
 // Add all comments for a bus to the comments table
 function showCommentList(busCode) {
   httpGetAsync(urlBusComments + busCode, function(response) {   
-    console.log('Updating buses position');
     response = JSON.parse(response);
-    console.log(response[0])
     for (var i = 0; i<response.length; i++) {
       var author = response[i]['userId']
       var body = response[i]['body']

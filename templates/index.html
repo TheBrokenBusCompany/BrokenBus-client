@@ -18,6 +18,7 @@
         <script src="https://kit.fontawesome.com/4e4b879682.js" crossorigin="anonymous"></script>
         <!-- /Fontawesome for weather icons -->
         
+        <script src="{{url_for('static', filename='js/imgur.js')}}"></script>
         <script src="{{url_for('static', filename='js/index.js')}}"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     </head>
@@ -68,13 +69,14 @@
               </div>
               <div class="modal-footer">
                 <div id="divCommentForm">
-                    <form id="commentForm" method="POST" action="http://localhost:5001/api/v1/comments">
-                        <input type="text" name="body"/>
-                        <input id="formUserId" type="hidden" name="userId" value=""/>
-                        <input type="hidden" name="image" value="null"/>
+                    <form id="commentForm">
+                        <input id="commentBody" type="text" name="body"/>
+                        <input id="imgurUpload" type="file" name="fileToUpload" accept="image/*"  onchange="handleFiles(event)">
                         <input id="formEmtCode" type="hidden" name="emtCode" value=""/>
-                        <input type="submit" id="addComment" value="Add Comment"/></br>
+                        <input id="formUserToken" type="hidden" name="userId" value=""/></br>
+                        <input type="button" onclick="postComment()" id="addComment" value="Add Comment"/></br>
                     </form>
+                    <canvas width="64" height="64" id="canvas"></canvas>
                 </div>
                 <table id="commentsTable">
                     <th>
