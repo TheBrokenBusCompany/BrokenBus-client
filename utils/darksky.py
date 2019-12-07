@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 
 malaga_lat = -4.43
 malaga_lon = 36.71
@@ -28,9 +29,13 @@ def downloadWeatherForecast(lat, lon):
     Download weather data and returns a json
     with the response
     '''
-    with open ('secrets.json') as file:
-        data = json.load(file)
-        apikey = data['darkSkyAPIKEY']
+    apikey = ''
+    if 'darkSkyAPIKEY' in os.environ:
+        apikey = os.environ['darkSkyAPIKEY']
+    else:
+        with open ('secrets.json') as file:
+            data = json.load(file)
+            apikey = data['darkSkyAPIKEY']
 
     request_url = url.format(apikey, lat, lon)
     response = requests.get(request_url)
