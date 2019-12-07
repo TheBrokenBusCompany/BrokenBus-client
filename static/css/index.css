@@ -109,7 +109,9 @@
     position: fixed;
     bottom: 0;
     background-color: #fefefe;
-    width: 100%;
+    left: 10%;
+    width: 80%;
+    border-radius: 8px;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
@@ -133,18 +135,21 @@
   
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #303040;
     color: white;
+    border-radius: 8px 8px 0px 0px;
 }
   
 .modal-body {
     padding: 2px 16px;
+    border-radius: 8px;
 }
   
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #303040;
     color: white;
+    border-radius: 0px 0px 8px 8px;
 }
   
 /* Add Animation */
@@ -176,7 +181,8 @@
 }
 
 #commentsTable {
-    border: 1px solid black;
+    color: white;
+    border: 1px solid white;
 }
 
 #canvas {
