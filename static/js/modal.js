@@ -1,11 +1,19 @@
 // Get the modal and close modal elements
-var modal = document.getElementById("infoEMT");
+var modal = document.getElementsByClassName("modal")[0];//document.getElementById('emtBusInfo');
+//var modal2 = document.getElementById('emtStopInfo');
 var span = document.getElementsByClassName("close")[0];
 const urlBusComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
 
 // Opens the modal, trigered when a bus marker is clicked
 function showModal(element) {
+  /*
+    console.log(modal == modal2); 
+    console.log(modal);
+    console.log(modal2);
     modal.style.display = "block";
+    modal2.style.display = "none";
+  */
+
     var properties = element.target.feature.properties;
     document.getElementById("modalTitle").innerText = "Bus " + properties.busCode;
     document.getElementById("modalLineCode").innerText = "Line: " + properties.codLine;

@@ -129,7 +129,7 @@ async function showStops() {
         
         L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: stopIcon});
+                return L.marker(latlng, {icon: stopIcon}).on('click',showModal2);
             }
         }).addTo(map);
     }, async function(response) {
