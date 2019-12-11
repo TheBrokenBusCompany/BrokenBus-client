@@ -176,11 +176,11 @@
 
 /* Comments in modal */
 
-#divCommentForm {
+.commentForm {
     display: none;
 }
 
-#commentsTable {
+.commentsTable {
     color: white;
     border: 1px solid white;
 }
