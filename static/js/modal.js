@@ -14,11 +14,9 @@ function showModal(element) {
     console.log(modal2);
     modal2.style.display = "none";
   */
-    console.log(modal);
-    console.log(element);
     modal.style.display = "block";
     infoBuses.style.display = "block";
-
+    infoStops.style.display = "none";
     var properties = element.target.feature.properties;
     document.getElementById("modalTitle").innerText = "Bus " + properties.busCode;
     document.getElementById("modalLineCode").innerText = "Line: " + properties.codLine;
@@ -35,12 +33,14 @@ function openModal2(element) {
 
   modal.style.display = "block";
   infoStops.style.display = "block";
+  infoBuses.style.display = "none";
+
   var properties = element.target.feature.properties;
   document.getElementById("modal2Title").innerText = "StopCode " + properties.stopCode;
   document.getElementById("modal2Name").innerText = "StopName " + properties.stopName;
-  document.getElementById("form2EmtCode").value = 's' + properties.stopCode;
+  document.getElementById("formEmtCode").value = 's' + properties.stopCode;
   
-  clearRows2();
+  clearRows();
   showCommentList2('s' + properties.stopCode);
 }
 
@@ -105,24 +105,6 @@ function showCommentList(busCode) {
 });
 }
 
-// Clears the comments table
-function clearRows2() {
-  var table = document.getElementById("commentsTable2");
-  for(var i = table.rows.length - 1; i > 0; i--) {
-      table.deleteRow(i);
-  }
-}
-
-// Adds a new data row to the comments table
-function addRow2(content) {
-  tabBody = document.getElementById("commentsTable2");
-  row = document.createElement("tr");
-  cell = document.createElement("td");
-  cell.appendChild(content);
-  row.appendChild(cell);
-  tabBody.appendChild(row);
-}
-
 // Add all comments for a stop to the comments table
 function showCommentList2(stopCode) {
   httpGetAsync(urlStopsComments + stopCode, function(response) {   
@@ -141,7 +123,7 @@ function showCommentList2(stopCode) {
       var div = document.createElement('div');
       div.innerHTML = author + '</br>' + body + '</br>' + image;
 
-      addRow2(div);
+      addRow(div);
     }
 }, function(response) {
     console.log('Error on load comments = ' + response);
