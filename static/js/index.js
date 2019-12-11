@@ -104,7 +104,7 @@ async function refresh() {
         
         geoJSONLayer = L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: busIcon}).on('click', showModal);
+                return L.marker(latlng, {icon: busIcon}).on('click',showModal);
             }
         }).addTo(map);
 
@@ -129,7 +129,7 @@ async function showStops() {
         
         L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: stopIcon}).on('click',showModal2);
+                return L.marker(latlng, {icon: stopIcon}).on('click',openModal2);
             }
         }).addTo(map);
     }, async function(response) {
