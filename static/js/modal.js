@@ -3,6 +3,7 @@ var modal = document.getElementById('emtBusInfo');
 var infoBuses = document.getElementById('busInfo');
 var infoStops = document.getElementById('infoStop');
 var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementsByClassName("close")[1];
 const urlBusComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
 const urlStopsComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
 
@@ -48,6 +49,10 @@ function openModal2(element) {
 span.onclick = function() {
   modal.style.display = "none";
   infoBuses.style.display = "none";
+}
+
+span2.onclick = function() {
+  modal.style.display = "none"; 
   infoStops.style.display = "none";
 }
 
