@@ -56,66 +56,65 @@
             Error updating buses positions. Trying again in 60 seconds.
         </div>
 
-        <div class="leaflet-top searchForm">
-            <form>
-              <input type="search" id="searchBox" placeholder="Search...">
-              <button id="searchButton">Search</button>
-           </form>
-        </div>
+        <div class="wrapper">
 
-        <div id="emtBusInfo" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div id="busInfo" >
-                    <div class="modal-header">
-                        <span class="close">&times;</span>
-                        <h2 id="modalTitle"><!-- Bus code will be inserted here --></h2>
-                    </div>
-                    <div class="modal-body">
-                        <p id="modalLineCode"><!-- Bus line code will be inserted here --></p>
-                        <p id="modalDirection"><!-- Bus line direction will be inserted here --></p>
-                        <p id="modalLastUpdate"><!-- Bus last update will be inserted here --></p>
+            <div class="searchForm">
+                <form>
+                    <input type="search" id="searchBox" placeholder="Search...">
+                    <button id="searchButton">Search</button>
+                </form>
+            </div>
+
+            <div id="emtBusInfo" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div id="busInfo" >
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2 id="modalTitle"><!-- Bus code will be inserted here --></h2>
+                        </div>
+                        <div class="modal-body">
+                            <p id="modalLineCode"><!-- Bus line code will be inserted here --></p>
+                            <p id="modalDirection"><!-- Bus line direction will be inserted here --></p>
+                            <p id="modalLastUpdate"><!-- Bus last update will be inserted here --></p>
+                        </div>
+                    
                     </div>
                 
-                </div>
-            
+                    <div class="modal-footer">
+                        <h3>Comments</h3>
+                        <div id="divCommentForm" class="commentForm">
+                            <form id="commentForm">
+                                <input id="commentBody" type="text" name="body"/>
+                                <input id="imgurUpload" type="file" name="fileToUpload" accept="image/*"  onchange="handleFiles(event)" value="Upload image">
+                                <input type="button" onclick="postComment()" id="addComment" value="Add Comment"/>
+                                <input id="formUserToken" type="hidden" name="userId" value=""/>
+                                <input id="formEmtCode" type="hidden" name="emtCode" value=""/>
+                            </form>
+                            <canvas width="64" height="64" id="canvas"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div id="commentSection">
+                        <ul id="listComments">
 
-                <div id="infoStop">
-                    <div class="modal-header">
-                        <span class="close">&times;</span>
-                        <h2 id="modal2Title"><!-- Stop code will be inserted here --></h2>
-                    </div>
-                    <div class="modal-body">
-                        <p id="modal2Name"><!-- Stop name will be inserted here --></p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div id="divCommentForm" class="commentForm">
-                        <form id="commentForm">
-                            <input id="commentBody" type="text" name="body"/>
-                            <input id="imgurUpload" type="file" name="fileToUpload" accept="image/*"  onchange="handleFiles(event)">
-                            <input id="formEmtCode" type="hidden" name="emtCode" value=""/>
-                            <input id="formUserToken" type="hidden" name="userId" value=""/></br>
-                            <input type="button" onclick="postComment()" id="addComment" value="Add Comment"/></br>
-                        </form>
-                        <canvas width="64" height="64" id="canvas"></canvas>
-                    </div>
-                    <table id="commentsTable" class="commentsTable">
-                        <th>
-                            <td>
-                                Comments
-                            </td>
-                        </th>
-                        <!-- Comments will be inserted here -->
-                    </table>
+<!-- EJEMPLO DE UN COMENTARIO
+    <li class="user-comment">
+        <div class="userInfo">
+            <img class="avatar" src=""/>
+            <div class="username">Javi</div>
+        </div>
+        
+        <div class="text">Suspendisse gravida sem?</div>
+    </li>
+-->
+                        </ul>
+                    </div>                    
                 </div>
             </div>
         </div>
 
-
-
         <script src="{{url_for('static', filename='js/map.js')}}"></script>
         <script src="{{url_for('static', filename='js/modal.js')}}"></script>
-      <!--  <script src="{{url_for('static', filename='js/modal2.js')}}"></script>  -->
     </body>
 </html>

@@ -104,7 +104,7 @@ async function refresh() {
         
         geoJSONLayer = L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: busIcon}).on('click',showModal);
+                return L.marker(latlng, {icon: busIcon}).on('click',showBus);
             }
         }).addTo(map);
 
@@ -129,7 +129,7 @@ async function showStops() {
         
         L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: stopIcon}).on('click',openModal2);
+                return L.marker(latlng, {icon: stopIcon}).on('click',showStop);
             }
         }).addTo(map);
     }, async function(response) {
@@ -150,15 +150,26 @@ function postComment() {
     var request = new XMLHttpRequest();
     request.open("POST", urlComment);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+    request.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            
+            if (this.status == 200) {
+                clearComments();
+                showCommentList(emtCode);
+            } else {
+                alert('ERROR: status code: ' + request.status)
+            }
+
+            document.getElementById('commentForm').reset();
+            emtCode = document.getElementById('formEmtCode').value = emtCode;
+            document.getElementById('formUserToken').value = userToken;
+        }
+    }   
+    
     request.send('image=' + imageEncoded +
         '&userToken=' + userToken +
         '&body=' + body +
         '&emtCode=' + emtCode);
-    
-    if (request.status = 200) {
-        clearRows();
-        showCommentList(emtCode);
-    } else {
-        alert('ERROR: status code: ' + request.status)
-    }
 }
