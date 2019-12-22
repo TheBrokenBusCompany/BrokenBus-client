@@ -3,16 +3,16 @@ html {
     scrollbar-base-color: #646464;
     scrollbar-3dlight-color: #646464;
     scrollbar-highlight-color: #646464;
-    scrollbar-track-color: #000;
-    scrollbar-arrow-color: #4078c2;
+    scrollbar-track-color: #4078c2;
+    scrollbar-arrow-color: black;
     scrollbar-shadow-color: #646464;
   }
   
   ::-webkit-scrollbar { width: 15px; height: 3px;}
   ::-webkit-scrollbar-button {  background-color: #666; }
-  ::-webkit-scrollbar-track {  background-color: #646464;}
-  ::-webkit-scrollbar-track-piece { background-color: #000;}
-  ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+  ::-webkit-scrollbar-track {  background-color: #4078c2;}
+  ::-webkit-scrollbar-track-piece { background-color: #303040;}
+  ::-webkit-scrollbar-thumb { height: 50px; background-color: #4078c2; border-radius: 3px;}
   ::-webkit-scrollbar-corner { background-color: #646464;}
   ::-webkit-resizer { background-color: #666;}
 
@@ -24,6 +24,30 @@ body {
     height: 100%
 }
 
+/* todos los botones */
+
+.appButton {
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    background-color: #4078c2;
+    border-color: #4078c2;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.appButton:hover{
+    background-color: #d8d8d8;
+    border-color: #d8d8d8;
+    color: black;
+}
+
+.appButton:active {
+    background-color: #414157;
+    box-shadow: 0 5px #666;
+    transform: translateY(5px);
+  }
+
 /* OAuth: Login, user info and logout */
 .loginHeader {
     pointer-events: auto;
@@ -31,24 +55,10 @@ body {
     padding-top: 1%;
 }
 
-#signOutButton {
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    border-radius: 8px;
-    background-color: #4078c2;
-    border-color: #4078c2;
-    color: white;
-    padding: 5px;
-}
-
-#signOutButton:hover {
-    background-color: #d8d8d8;
-    border-color: #d8d8d8;
-    color: black;
-  }
-
 #googleUser {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color: #303040;
     color: white;
     border-radius: 20px;
@@ -56,16 +66,28 @@ body {
     padding: 5px;
 }
 
+#columnWrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#signOutButton {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 #userName {
-    float: left;
-    padding-bottom: 0.5em;
+    text-align: center;
+    padding-bottom: 1em;
 }
 
 #profilePicture {
+    border-radius: 50%;
     height: 3em;
     width: 3em;
-    float: left;
-    margin-right: 1em;
+    vertical-align: middle;
+    margin-left: 1em;
 }
 /* End: OAuth: Login, user info and logout */
 
@@ -163,8 +185,6 @@ body {
     top: 3%;
     left: 80%;
     width: 20%;
-    background-color: #4078c2;
-    color: white;
     border-color: #4078c2;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -172,18 +192,6 @@ body {
     border-bottom-right-radius: 10px;
     padding-top: 8px;
     padding-bottom: 10px;
-}
-
-#searchButton:hover {
-    background-color: #d8d8d8;
-    border-color: #d8d8d8;
-    color: black;
-}
-
-#searchButton:active {
-  background-color: #414157;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
 }
 
 /* End: Search form */
@@ -298,19 +306,11 @@ body {
 
 #addComment {
     width: 100%;
-    background-color: #4078c2;
-    color: white;
     padding: 8px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-#addComment:hover {
-    background-color: #d8d8d8;
-    border-color: #d8d8d8;
-    color: black;
 }
 
 #canvas {

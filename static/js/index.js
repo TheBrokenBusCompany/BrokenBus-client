@@ -35,8 +35,8 @@ function onSignIn(googleUser) {
     document.getElementById('formUserToken').value = id_token;
 
     document.getElementById('googleSignIn').style.display = 'none';
-    document.getElementById('googleUser').style.display = 'inherit';
-    document.getElementById('divCommentForm').style.display = 'inherit';
+    document.getElementById('googleUser').style.display = 'flex';
+    document.getElementById('divCommentForm').style.display = 'block';
 }
 
 
@@ -62,7 +62,7 @@ function signOut() {
     document.getElementById("profilePicture").src = '';
     document.getElementById('formUserToken').value = '';
 
-    document.getElementById('googleSignIn').style.display = 'inherit';
+    document.getElementById('googleSignIn').style.display = 'block';
     document.getElementById('googleUser').style.display = 'none';
     document.getElementById('divCommentForm').style.display = 'none';
 }

@@ -27,12 +27,11 @@
         <div class="leaflet-top leaflet-right loginHeader">
             <div id="googleSignIn" class="g-signin2" data-onsuccess="onSignIn" data-onfailure="onError"></div>
             <div id="googleUser">
-                <img id="profilePicture" src="" alt="Profile picture"/>
-                <div id="userName">
-                    <!-- Username will be inserted here -->
+                <div id="columnWrapper">
+                    <div id="userName"><!-- Username will be inserted here --></div>
+                    <button id="signOutButton" class="appButton" onclick="signOut()">Sign out</button>
                 </div>
-                </br>
-                <button id="signOutButton" onclick="signOut()">Sign out</button>
+                <img class="profileAvatar" id="profilePicture" src="" alt="Profile picture"/>
             </div>
         </div>
         <div class="leaflet-bottom leaflet-right weatherFooter">
@@ -60,7 +59,7 @@
 
             <div class="searchForm">
                     <input type="search" id="searchBox" placeholder="Search...">
-                    <input type="button" id="searchButton" value="Search" />
+                    <input type="button" class="appButton" id="searchButton" value="Search" />
             </div>
 
             <div id="emtBusInfo" class="modal">
@@ -85,7 +84,7 @@
                             <form id="commentForm">
                                 <input id="commentBody" type="text" name="body"/>
                                 <input id="imgurUpload" type="file" name="fileToUpload" accept="image/*"  onchange="handleFiles(event)" value="Upload image">
-                                <input type="button" onclick="postComment()" id="addComment" value="Add Comment"/>
+                                <input type="button" class="appButton" onclick="postComment()" id="addComment" value="Add Comment"/>
                                 <input id="formUserToken" type="hidden" name="userId" value=""/>
                                 <input id="formEmtCode" type="hidden" name="emtCode" value=""/>
                             </form>

@@ -77,13 +77,13 @@ function showCommentList(busCode) {
       var body = response[i]['body'];
       var image = response[i]['imageURL'];
 
-      console.log(image);
-
       if (image == null || image == 'null') {
         createComment(author, body);
       } else {
         createComment(author, body, image);
       }
+
+      
     }
   }, function(response) {
       console.log('Error on load comments = ' + response);
