@@ -8,6 +8,7 @@ var lastUpdate = document.getElementById("modalLastUpdate");
 var emtCode =  document.getElementById("formEmtCode")
 var span = document.getElementsByClassName("close")[0];
 const urlBusComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
+const urlUsersID = 'http://localhost:5001/api/v1/users/id/'
 
 // Opens the modal, trigered when a bus marker is clicked
 function showBus(element) {
@@ -62,7 +63,6 @@ function clearComments() {
 
   var lis = document.querySelectorAll('#listComments li');
   for(var i=0; li=lis[i]; i++) {
-    console.log("e");
     li.parentNode.removeChild(li);
   }
   
@@ -78,19 +78,34 @@ function showCommentList(busCode) {
       var image = response[i]['imageURL'];
 
       if (image == null || image == 'null') {
-        createComment(author, body);
+        createComment(i, body);
       } else {
-        createComment(author, body, image);
+        createComment(i, body, image);
       }
 
-      
+      getUserCommenting(i, author);
     }
+  
   }, function(response) {
       console.log('Error on load comments = ' + response);
   });
 }
 
-function createComment(userID, body, image = null) {
+function getUserCommenting(number, author) {
+
+  httpGetAsync(urlUsersID + author, function(response) {
+        response = JSON.parse(response);
+        var username = response['username'];
+        var avatar = response['image'];
+
+        document.getElementById("username" + number).innerText = username;
+        document.getElementById("avatar" + number).src = avatar;
+    }, function(response) {
+        console.log('Error on load user commenting = ' + response);
+    });
+}
+
+function createComment(number, body, image = null) {
   var ul = document.getElementById("listComments");
   var li = document.createElement("li");
   li.setAttribute("class", "user-comment");
@@ -98,15 +113,15 @@ function createComment(userID, body, image = null) {
   userInfo = document.createElement("div");
   userInfo.className = "userInfo";
 
-  imagen = document.createElement("img");
-  imagen.className = "avatar";
-  imagen.src = user.getImageUrl();
+  avatar = document.createElement('img');
+  avatar.id = "avatar" + number;
+  avatar.className = "avatar";
 
   username = document.createElement("p");
+  username.id = "username" + number;
   username.className = "username";
-  username.innerHTML = userID;
 
-  userInfo.appendChild(imagen);
+  userInfo.appendChild(avatar);
   userInfo.appendChild(username);
 
   text = document.createElement("div");
@@ -116,7 +131,6 @@ function createComment(userID, body, image = null) {
   li.appendChild(userInfo);
   li.appendChild(text);
 
-  console.log(image);
   if (!(image == null || image == 'null')) {
     commentImage = document.createElement("img");
     commentImage.className = "commentImage";

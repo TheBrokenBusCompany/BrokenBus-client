@@ -145,6 +145,7 @@ async function showStops() {
 function postComment() {
     var imageEncoded = prepareImage();
     var body = document.getElementById('commentBody').value;
+    if (body=="") return;
     var emtCode = document.getElementById('formEmtCode').value;
     var userToken = document.getElementById('formUserToken').value;
     var request = new XMLHttpRequest();

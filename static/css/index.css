@@ -6,6 +6,8 @@ html {
     scrollbar-track-color: #4078c2;
     scrollbar-arrow-color: black;
     scrollbar-shadow-color: #646464;
+
+    font-family: Courier, monospace;
   }
   
   ::-webkit-scrollbar { width: 15px; height: 3px;}
@@ -37,8 +39,8 @@ body {
 }
 
 .appButton:hover{
-    background-color: #d8d8d8;
-    border-color: #d8d8d8;
+    background-color: #b1c8e7;
+    border-color: #b1c8e7;
     color: black;
 }
 
@@ -78,6 +80,7 @@ body {
 }
 
 #userName {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     padding-bottom: 1em;
 }
@@ -120,6 +123,7 @@ body {
 }
 
 #weatherForecast {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     pointer-events: auto;
     background-color: #303040;
     color: white;
@@ -250,6 +254,7 @@ body {
 }
   
 .modal-body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 2px 16px;
     background-color: white;
 }
@@ -331,14 +336,14 @@ body {
 
 .user-comment{
     justify-content: flex-end;
-    border: 1px solid #ddd;
-    border-radius: 4px;
     width: 100%;
     margin-top: 2%;
 }
 
 .userInfo {
     display: flex;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .avatar {
@@ -346,10 +351,11 @@ body {
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    border-radius: 50%;
 }
 
 .text {
-    padding-left:20px;
+    font-family: 'Courier New', Courier, monospace;
     margin:8px;
 }
 

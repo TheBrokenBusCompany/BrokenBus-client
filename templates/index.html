@@ -81,7 +81,7 @@
                     <div class="modal-footer">
                         <h3>Comments</h3>
                         <div id="divCommentForm" class="commentForm">
-                            <form id="commentForm">
+                            <form id="commentForm" onsubmit="return false">
                                 <input id="commentBody" type="text" name="body"/>
                                 <input id="imgurUpload" type="file" name="fileToUpload" accept="image/*"  onchange="handleFiles(event)" value="Upload image">
                                 <input type="button" class="appButton" onclick="postComment()" id="addComment" value="Add Comment"/>
