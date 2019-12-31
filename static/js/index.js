@@ -1,9 +1,9 @@
 var geoJSONLayer = null;
 var user = null;
-const busesEndpoint = 'http://localhost:5001/api/v1/buses/geojson';
-const stopsEndpoint = 'http://localhost:5001/api/v1/stops/geojson';
-const urlUser = 'http://localhost:5001/api/v1/users';
-const urlComment = 'http://localhost:5001/api/v1/comments';
+const busesEndpoint = 'https://brokenbus-server.herokuapp.com/api/v1/buses/geojson';
+const stopsEndpoint = 'https://brokenbus-server.herokuapp.com/api/v1/stops/geojson';
+const urlUser = 'https://brokenbus-server.herokuapp.com/api/v1/users';
+const urlComment = 'https://brokenbus-server.herokuapp.com/api/v1/comments';
 
 const busIcon = new L.icon({ 
     iconUrl: '/static/icon/icon_bus.png',

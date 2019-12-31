@@ -7,8 +7,8 @@ var direction = document.getElementById("modalDirection");
 var lastUpdate = document.getElementById("modalLastUpdate");
 var emtCode =  document.getElementById("formEmtCode")
 var span = document.getElementsByClassName("close")[0];
-const urlBusComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
-const urlUsersID = 'http://localhost:5001/api/v1/users/id/'
+const urlBusComments = 'https://brokenbus-server.herokuapp.com/api/v1/comments/EMTCode/'
+const urlUsersID = 'https://brokenbus-server.herokuapp.com/api/v1/users/id/'
 
 // Opens the modal, trigered when a bus marker is clicked
 function showBus(element) {
