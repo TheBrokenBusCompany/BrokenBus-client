@@ -35,8 +35,8 @@ function onSignIn(googleUser) {
     document.getElementById('formUserToken').value = id_token;
 
     document.getElementById('googleSignIn').style.display = 'none';
-    document.getElementById('googleUser').style.display = 'inherit';
-    document.getElementById('divCommentForm').style.display = 'inherit';
+    document.getElementById('googleUser').style.display = 'flex';
+    document.getElementById('divCommentForm').style.display = 'block';
 }
 
 
@@ -62,7 +62,7 @@ function signOut() {
     document.getElementById("profilePicture").src = '';
     document.getElementById('formUserToken').value = '';
 
-    document.getElementById('googleSignIn').style.display = 'inherit';
+    document.getElementById('googleSignIn').style.display = 'block';
     document.getElementById('googleUser').style.display = 'none';
     document.getElementById('divCommentForm').style.display = 'none';
 }
@@ -104,7 +104,7 @@ async function refresh() {
         
         geoJSONLayer = L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: busIcon}).on('click',showModal);
+                return L.marker(latlng, {icon: busIcon}).on('click',showBus);
             }
         }).addTo(map);
 
@@ -129,7 +129,7 @@ async function showStops() {
         
         L.geoJSON(JSON.parse(response), {
             pointToLayer: function (feature, latlng) {
-                return L.marker(latlng, {icon: stopIcon}).on('click',openModal2);
+                return L.marker(latlng, {icon: stopIcon}).on('click',showStop);
             }
         }).addTo(map);
     }, async function(response) {
@@ -145,20 +145,32 @@ async function showStops() {
 function postComment() {
     var imageEncoded = prepareImage();
     var body = document.getElementById('commentBody').value;
+    if (body=="") return;
     var emtCode = document.getElementById('formEmtCode').value;
     var userToken = document.getElementById('formUserToken').value;
     var request = new XMLHttpRequest();
     request.open("POST", urlComment);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+
+    request.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE) {
+            
+            if (this.status == 200) {
+                clearComments();
+                showCommentList(emtCode);
+            } else {
+                alert('ERROR: status code: ' + request.status)
+            }
+
+            document.getElementById('commentForm').reset();
+            emtCode = document.getElementById('formEmtCode').value = emtCode;
+            document.getElementById('formUserToken').value = userToken;
+        }
+    }   
+    
     request.send('image=' + imageEncoded +
         '&userToken=' + userToken +
         '&body=' + body +
         '&emtCode=' + emtCode);
-    
-    if (request.status = 200) {
-        clearRows();
-        showCommentList(emtCode);
-    } else {
-        alert('ERROR: status code: ' + request.status)
-    }
 }

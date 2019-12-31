@@ -1,6 +1,54 @@
+html {
+    scrollbar-face-color: #646464;
+    scrollbar-base-color: #646464;
+    scrollbar-3dlight-color: #646464;
+    scrollbar-highlight-color: #646464;
+    scrollbar-track-color: #4078c2;
+    scrollbar-arrow-color: black;
+    scrollbar-shadow-color: #646464;
+
+    font-family: Courier, monospace;
+  }
+  
+  ::-webkit-scrollbar { width: 15px; height: 3px;}
+  ::-webkit-scrollbar-button {  background-color: #666; }
+  ::-webkit-scrollbar-track {  background-color: #4078c2;}
+  ::-webkit-scrollbar-track-piece { background-color: #303040;}
+  ::-webkit-scrollbar-thumb { height: 50px; background-color: #4078c2; border-radius: 3px;}
+  ::-webkit-scrollbar-corner { background-color: #646464;}
+  ::-webkit-resizer { background-color: #666;}
+
+body {
+    position: relative;
+}
+
 #map {
     height: 100%
 }
+
+/* todos los botones */
+
+.appButton {
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    background-color: #4078c2;
+    border-color: #4078c2;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.appButton:hover{
+    background-color: #b1c8e7;
+    border-color: #b1c8e7;
+    color: black;
+}
+
+.appButton:active {
+    background-color: #414157;
+    box-shadow: 0 5px #666;
+    transform: translateY(5px);
+  }
 
 /* OAuth: Login, user info and logout */
 .loginHeader {
@@ -9,35 +57,40 @@
     padding-top: 1%;
 }
 
-#signOutButton {
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    border-radius: 8px;
-    background-color: #C0C0C0;
-}
-
-#signOutButton:hover {
-    background-color: #d8d8d8;
-  }
-
 #googleUser {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color: #303040;
     color: white;
     border-radius: 20px;
     border: 10px solid #303040;
+    padding: 5px;
+}
+
+#columnWrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#signOutButton {
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 #userName {
-    float: left;
-    padding-bottom: 0.5em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding-bottom: 1em;
 }
 
 #profilePicture {
+    border-radius: 50%;
     height: 3em;
     width: 3em;
-    float: left;
-    margin-right: 1em;
+    vertical-align: middle;
+    margin-left: 1em;
 }
 /* End: OAuth: Login, user info and logout */
 
@@ -70,6 +123,7 @@
 }
 
 #weatherForecast {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     pointer-events: auto;
     background-color: #303040;
     color: white;
@@ -86,18 +140,75 @@
 }
 /* End: Dark sky integration */
 
+.wrapper{
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+    width: 25%;
+    margin-right: 75%;
+    height: 100%;
+}
+
+/* Search form */
+
+.searchForm {
+    position: absolute;
+    top: 3%;
+    height: 7%;
+    width: 100%;
+}
+
+#searchBox {
+    pointer-events: auto;
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    width: 75%;
+    background-color: #303040;
+    color: white;
+    padding-right: 1%;
+    padding-left: 0.5%;
+    padding-top: 2px;
+    padding-bottom: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border: 10px solid #303040;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #d6d6d6;
+    opacity: 1; /* Firefox */
+  }
+
+#searchButton {
+    pointer-events: auto;
+    position: absolute;
+    top: 3%;
+    left: 80%;
+    width: 20%;
+    border-color: #4078c2;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+}
+
+/* End: Search form */
+
 /* Bus and stop info Modal */
 .modal {
+    pointer-events: auto;
     display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 9999; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    position: absolute;
+    left: 5%;
+    width: 95%;
+    top: 10.5%;
+    height: 86%;
     -webkit-animation-name: fadeIn; /* Fade in the background */
     -webkit-animation-duration: 0.4s;
     animation-name: fadeIn;
@@ -106,16 +217,18 @@
   
 /* Modal Content */
 .modal-content {
-    position: fixed;
-    bottom: 0;
-    background-color: #fefefe;
-    left: 10%;
-    width: 80%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #303040;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    padding-bottom: 10px;
 }
   
 /* The Close Button */
@@ -141,15 +254,25 @@
 }
   
 .modal-body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 2px 16px;
-    border-radius: 8px;
+    background-color: white;
 }
   
 .modal-footer {
     padding: 2px 16px;
     background-color: #303040;
     color: white;
+}
+
+#commentSection {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2px 16px;
+    background-color: #303040;
+    color: white;
     border-radius: 0px 0px 8px 8px;
+    padding-bottom: 10px;
 }
   
 /* Add Animation */
@@ -174,22 +297,74 @@
 }
 /* End: Bus and stop info Modal */
 
-/* Comments in modal */
+/* Comment Form */
 
-.commentForm {
-    display: none;
+#commentBody {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.commentsTable {
-    color: white;
-    border: 1px solid white;
+#addComment {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #canvas {
     display: none;
 }
 
+/* End: Comment Form */
+
+/* Comments in modal */
+
+#listComments{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.user-comment{
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.avatar {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.text {
+    font-family: 'Courier New', Courier, monospace;
+    margin:8px;
+}
+
 .commentImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: auto;
-    height: 64px;
+    height: 100px;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
