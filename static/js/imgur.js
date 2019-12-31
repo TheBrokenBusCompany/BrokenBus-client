@@ -1,4 +1,4 @@
-const imageEndpoint = 'http://localhost:5001/api/v1/imgurTest/upload';
+const imageEndpoint = 'https://brokenbus-server.herokuapp.com/api/v1/imgurTest/upload';
 var file = null;
 
 function handleFiles(e) {

@@ -4,8 +4,8 @@ var infoBuses = document.getElementById('busInfo');
 var infoStops = document.getElementById('infoStop');
 var span = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[1];
-const urlBusComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
-const urlStopsComments = 'http://localhost:5001/api/v1/comments/EMTCode/'
+const urlBusComments = 'https://brokenbus-server.herokuapp.com/api/v1/comments/EMTCode/'
+const urlStopsComments = 'https://brokenbus-server.herokuapp.com/api/v1/comments/EMTCode/'
 
 // Opens the modal, trigered when a bus marker is clicked
 function showModal(element) {
