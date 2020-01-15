@@ -11,10 +11,10 @@ const urlBusComments = 'https://brokenbus-server.herokuapp.com/api/v1/comments/E
 const urlUsersID = 'https://brokenbus-server.herokuapp.com/api/v1/users/id/'
 function showBus(element){
     var properties = element.target.feature.properties;
-    showElement(properties);
+    showElementBus(properties);
 }
 // Opens the modal, trigered when a bus marker is clicked
-function showElement(properties) {
+function showElementBus(properties) {
 
     modal.style.display = "block";
     infoBuses.style.display = "block";
@@ -34,12 +34,17 @@ function showElement(properties) {
     showCommentList('b' + properties.busCode);
 }
 
-function showStop(element) {
+function showStop(element){
+    var properties = element.target.feature.properties;
+    showElementStop(properties);
+}
+
+function showElementStop(properties) {
 
   modal.style.display = "block";
   infoBuses.style.display = "block";
 
-  var properties = element.target.feature.properties;
+
 
   title.innerText = "Stop " + properties.stopCode;
   document.getElementById("modalLineCode").innerText = "Name: " + properties.stopName;

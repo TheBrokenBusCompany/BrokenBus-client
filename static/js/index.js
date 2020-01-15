@@ -181,12 +181,25 @@ function search(){
         console.log(layer)
         var feature = layer.feature
         if(feature!=null){
-            var code = feature.properties.stopCode
-            console.log(code)
-            console.log(searchParameter)
-            if(searchParameter==code){
-                showElement(layer.feature.properties)
+            var stopCode = feature.properties.stopCode
+            if(stopCode==null){
+                var busCode = feature.properties.busCode
+                console.log(busCode)
+                console.log(searchParameter)
+                if(searchParameter==busCode){
+                    showBusElement(layer.feature.properties)
+                 }
+            } else{
+                var stopCode = feature.properties.stopCode
+                console.log(stopCode)
+                console.log(searchParameter)
+                if(searchParameter==stopCode){
+                    showStopElement(layer.feature.properties)
+                 }
+             }
         }
+
+
         }
 
 
