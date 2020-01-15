@@ -179,12 +179,18 @@ function search(){
     var searchParameter=document.getElementById('searchBox').value
     map.eachLayer(function (layer){
         console.log(layer)
-        //var code = layer.feature.properties.stopCode
-        //console.log(code)
-        console.log(searchParameter)
-        //if(searchParameter==code){
-          //  showElement(layer.feature.properties)
-        //}
+        var feature = layer.feature
+        if(feature!=null){
+            var code = feature.properties.stopCode
+            console.log(code)
+            console.log(searchParameter)
+            if(searchParameter==code){
+                showElement(layer.feature.properties)
+        }
+        }
+
+
+
     })
 
 }
