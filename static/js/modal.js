@@ -9,14 +9,17 @@ var emtCode =  document.getElementById("formEmtCode")
 var span = document.getElementsByClassName("close")[0];
 const urlBusComments = 'https://brokenbus-server.herokuapp.com/api/v1/comments/EMTCode/'
 const urlUsersID = 'https://brokenbus-server.herokuapp.com/api/v1/users/id/'
-
+function showBus(element){
+    var properties = element.target.feature.properties;
+    showElement(properties);
+}
 // Opens the modal, trigered when a bus marker is clicked
-function showBus(element) {
+function showElement(properties) {
 
     modal.style.display = "block";
     infoBuses.style.display = "block";
 
-    var properties = element.target.feature.properties;
+
     
     title.innerText = "Bus " + properties.busCode;
     document.getElementById("modalLineCode").innerText = "Line: " + properties.codLine;
