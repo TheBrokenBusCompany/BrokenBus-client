@@ -196,12 +196,8 @@ function search(){
                 if(searchParameter==stopCode){
                     showStopElement(layer.feature.properties)
                  }
-             }
+            }
         }
-
-
-        }
-
 
 
     })

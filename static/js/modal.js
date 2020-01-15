@@ -34,7 +34,7 @@ function showElementBus(properties) {
     showCommentList('b' + properties.busCode);
 }
 
-function showStop(element){
+function showStops(element){
     var properties = element.target.feature.properties;
     showElementStop(properties);
 }
