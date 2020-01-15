@@ -164,7 +164,7 @@ function postComment() {
             }
 
             document.getElementById('commentForm').reset();
-            emtCode = document.getElementById('formEmtCode').value = emtCode;
+            document.getElementById('formEmtCode').value = emtCode;
             document.getElementById('formUserToken').value = userToken;
         }
     }   
@@ -173,4 +173,12 @@ function postComment() {
         '&userToken=' + userToken +
         '&body=' + body +
         '&emtCode=' + emtCode);
+}
+
+function search(){
+    var searchParameter=document.getElementById('searchBox').value
+    map.eachLayer(function (layer){
+    console.log(layer);
+    })
+
 }
