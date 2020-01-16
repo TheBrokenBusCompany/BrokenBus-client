@@ -194,7 +194,7 @@ function search(){
                 console.log(stopCode)
                 console.log(searchParameter)
                 if(searchParameter==stopCode){
-                    showStopElement(layer.feature.properties)
+                    showElementStop(layer.feature.properties)
                  }
             }
         }
