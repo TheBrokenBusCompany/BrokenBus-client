@@ -187,7 +187,7 @@ function search(){
                 console.log(busCode)
                 console.log(searchParameter)
                 if(searchParameter==busCode){
-                    showBusElement(layer.feature.properties)
+                    showElementBus(layer.feature.properties)
                  }
             } else{
                 var stopCode = feature.properties.stopCode
